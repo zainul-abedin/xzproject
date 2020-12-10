@@ -146,7 +146,7 @@
 </div>
 
 <!---------- set url for get data by Ajax request --------------------------->
-<div id='allChantirUrl' data-url ='{{route("chantier.index")}}'></div>
+<div id='allChantirUrl' data-url ='{{route("chantier.data")}}'></div>
 <!---------- set url for get data by Ajax request end ----------------------->  
 
 <script>
