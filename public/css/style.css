@@ -1,0 +1,206 @@
+ /* Styles go here 
+.pagebreak { page-break-before: always; } 
+ * FullCalendar v1.6.2 Print Stylesheet
+ * Docs & License: http://arshaw.com/fullcalendar/
+ * (c) 2013 Adam Shaw
+ */
+
+/*
+ * Include this stylesheet on your page to get a more printer-friendly calendar.
+ * When including this stylesheet, use the media='print' attribute of the <link> tag.
+ * Make sure to include this stylesheet IN ADDITION to the regular fullcalendar.css.
+ */
+ 
+ 
+ /* Events
+-----------------------------------------------------*/
+
+/* for vertical events */
+	
+.fc-event-bg {
+	display: none !important;
+	}
+	
+.fc-event .ui-resizable-handle {
+	display: none !important;
+	}
+
+/********* color picker Radio Buttons start ***************/
+
+.radio-box {
+  width: auto;
+  height: auto;
+  margin: 0px 0px 10px 8px;
+  padding: 0px;
+  text-align: left;
+  background: none;
+}
+
+.radio-box input {
+  display: none;
+}
+
+.button {
+  display: inline-block;
+  position: relative;
+  width: 25px;
+  height: 25px;
+  margin: 4px 4px 10px 4px;
+  cursor: pointer;
+}
+
+.button span {
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 25px;
+  padding: 0px 0px 0px 0px;
+  margin: 22px 0px 0px 12px;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  background: #eeeeee;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: ease .3s;
+}
+
+.button span:hover {
+  padding: 10px;
+}
+
+
+.firebred .button span {
+  background: #b22222;
+}
+.tomato .button span {
+  background: #ff6347;
+}
+.darkorange .button span {
+  background: #ff8c00;
+}
+.magenta .button span {
+  background: #ff00ff;
+}
+.green .button span {
+  background: #008000;
+}
+
+.blue .button span {
+    background: #0000ff;
+}
+.gray .button span {
+  background: #808080;
+}
+.black .button span{
+    background: #000000;
+}
+
+.layer {
+  display: block;
+  position: absolute;
+  width: 92%;
+  height: 46px;
+  margin: 4px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  left: 14px;
+  border-radius: 4px;
+  background: transparent;
+  /*transition: ease .3s;*/
+  z-index: -1;
+}
+
+.firebred input:checked ~ .layer {
+  background: #b22222;
+}
+.tomato input:checked ~ .layer {
+  background: #ff6347;
+}
+.darkorange input:checked ~ .layer {
+  background: #ff8c00;
+}
+.magenta input:checked ~ .layer {
+  background: #ff00ff;
+}
+.green input:checked ~ .layer {
+  background: #008000;
+}
+.blue input:checked ~ .layer {
+    background: #0000ff;
+}
+.gray input:checked ~ .layer {
+  background: #808080;
+}
+.black input:checked ~ .layer {
+    background: #000000;
+}
+
+/********* color picker Radio Buttons end *****************/
+
+
+/********************** hr spaceing start ******************/
+.hr-spaceing-7 {
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.hr-spaceing-0 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.p-spaceing {
+    margin-top: -7px;
+    margin-bottom: -7px;
+}
+/************************* hr spaceing end *****************/
+
+/************************* btn-pluse start*******************/
+
+/**
+.btn-pluse {
+    height: 28px;
+    width: auto;
+    //border-radius: 50%;
+    color: #3c4043;
+    display: inline-flex;
+    //box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0, 302), 0 1px 3px 1px rgba(60, 64, 67,0.149);
+    transition: 0.5s;
+}
+*/
+/*
+.btn-pluse .text {
+    margin-left: 1px;
+    font-family: Verdana, serif;
+    font-size: 14px;
+    line-height: 54px;
+    display: none;
+}
+*/
+/*
+.btn-pluse::before {
+    background-image: url(https://www.gstatic.com/images/icons/material/colored_icons/1x/create_32dp.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 32px;
+    content: "";
+    min-width: 56px;
+    display: block;
+}
+*/
+/*
+.btn-pluse:hover {
+    background-position: 10px;
+    width: 200px;
+    height: auto;
+    border-radius: 90px;
+    text-decoration: none;
+}
+
+.btn-pluse:hover .text {
+    display: block;
+}
+*/
+
+/*********************** btn-pluse end *****************************/
