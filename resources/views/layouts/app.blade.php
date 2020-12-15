@@ -29,7 +29,7 @@
         <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
         
         <!-- select2 css -->
-        <link href="{{ asset('css/select2.css') }}"
+        <link href="{{ asset('css/select2.css') }}" rel="stylesheet"/>
 
         <!-- Styles -->
         <style>

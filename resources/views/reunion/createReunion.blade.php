@@ -7,7 +7,7 @@
     </div>
 
     <div class="input-group mb-3">
-        <select id="allChantiersReplace" class="form-control" name="chantier_id" required="required">
+        <select id="allChantiersReplace" class="form-control basic-single" name="chantier_id" required="required">
             <option value="" selected>sélectionnez un chantier</option>
             @foreach($chantiers as $chantier)
             <option value="{{ $chantier->id }}">
@@ -103,6 +103,14 @@
 <!---------- set url for get data by Ajax request end ----------------------->  
 
 <script>
+    
+    $(document).ready(function () {
+        $('.basic-single').select2({
+            placeholder: "sélectionnez un chantier",
+            allowClear: true
+        });
+    });
+    
     /**
      * Ajax function for update 'chantier' select field
      */

@@ -23,7 +23,7 @@
         </nav>
         
         <div class="input-group mb-3" >
-            <select class="custom-select" name="location_id" id="allLocationReplace" aria-label="Example select with button addon" required="required">
+            <select class="custom-select basic-single" name="location_id" id="allLocationReplace" aria-label="Example select with button addon" required="required">
                 <option value="{{ old('location_id') }}">
                         Sélectionner Location
                 </option>
@@ -45,11 +45,9 @@
                     </option>
                 @endforeach
             </select>
-            <div class="input-group-append">
-                <a href="{{ route('location.create') }}" target="_blank" class="btn btn-outline-secondary" type="button" style="font-size: 16px"><i class="fas fa-plus"></i></a>
-            </div>
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" id="allLocation" type="button" style="font-size: 16px"><i class="fas fa-redo-alt"></i></button>
+            <div class="btn-group d-flex" role="group" aria-label="...">
+                <a href="{{ route('location.create') }}" target="_blank" type="button" class="btn btn-outline-secondary" style="width: 10px; padding-left: 4px; padding-right: 17px; font-size: 15px"><i class="fas fa-plus"></i></a>
+                <button type="button" class="btn btn-outline-secondary" id="allLocation" style="width: 16px; padding-left: 4px; padding-right: 17px; font-size: 15px"><i class="fas fa-redo-alt"></i></button>
             </div>
         </div>
         
@@ -74,7 +72,7 @@
         </div>
         
         <div class="input-group input-group mb-3">
-            <select name='categorie[]' class="form-control" multiple="multiple" required="1">                    
+            <select name='categorie[]' class="form-control categorie" multiple="multiple" required="1">                    
                 <option value="">Sélectionner corps d'état</option>
                 <option value="Multi corps d'état">Multi corps d'état</option>
                 <option value="Peinture">Peinture</option>
@@ -102,6 +100,25 @@
 
 <script>
     
+    $(document).ready(function () {
+        $('.basic-single').select2({
+            placeholder: "Sélectionner Location",
+            allowClear: true
+        });
+    });
+    
+    /**
+     * script for ( Sélectionner Corps détat ) input field
+     * type: multiple select, name = 'categorie'
+     * class = 'categorie' 
+     * replace by (select2 multiple) 
+     * for this need this code in select field ( multiple="multiple" )
+     */
+    $(document).ready(function () {
+        $('.categorie').select2({
+            placeholder: "Sélectionner Corps d'état"
+        });
+    });
     
     /**
      * Ajax function for update 'chantier_adresse' select field

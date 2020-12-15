@@ -22,24 +22,23 @@
             <button type="submit" style="font-size: 30px; background-color: #E9E9E9"><i class="fas fa-save"></i></button>
         </nav>
         
-        <div>
-            <div class="input-group mb-3" >
-                <select class="custom-select" name="chantier_adresse_id" id="allChantierAdressesReplace" aria-label="Example select with button addon" required="required">
-                    <option value="{{ old('chantier_adresse_id') }}">
-                        Sélectionner adress
-                    </option>
-                    @foreach($chantier_adresses as $chantier_adresse)
-                        <option value="{{$chantier_adresse->id}}">{{$chantier_adresse->adresse}}</option>
-                    @endforeach
-                </select>
-                <div class="input-group-append">
-                    <a href="{{ route('chantierAdresse.create') }}" target="_blank" class="btn btn-outline-secondary" type="button" style="font-size: 16px"><i class="fas fa-plus"></i></a>
-                </div>
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" id="allChantierAdresses" type="button" style="font-size: 16px"><i class="fas fa-redo-alt"></i></button>
-                </div>
+        
+        
+        <div class="input-group mb-3" >
+            <select class="custom-select basic-single" name="chantier_adresse_id" id="allChantierAdressesReplace" aria-label="Example select with button addon" required="required">
+                <option value="{{ old('chantier_adresse_id') }}">
+                    Sélectionner adress
+                </option>
+                @foreach($chantier_adresses as $chantier_adresse)
+                    <option value="{{$chantier_adresse->id}}">{{$chantier_adresse->adresse}}</option>
+                @endforeach
+            </select> 
+            <div class="btn-group d-flex" role="group" aria-label="...">
+                <a href="{{ route('chantierAdresse.create') }}" target="_blank" type="button" class="btn btn-outline-secondary" style="width: 10px; padding-left: 4px; padding-right: 17px; font-size: 15px"><i class="fas fa-plus"></i></a>
+                <button type="button" class="btn btn-outline-secondary" id="allChantierAdresses" style="width: 16px; padding-left: 4px; padding-right: 17px; font-size: 15px"><i class="fas fa-redo-alt"></i></button>
             </div>
         </div>
+        
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default"><i class="far fa-building" style="font-size: 20px" ></i></span>
@@ -119,6 +118,15 @@
 <!---------- set url for get data by Ajax request end ----------------------->  
 
 <script>
+    
+    
+    $(document).ready(function () {
+        $('.basic-single').select2({
+            placeholder: "Sélectionner l'adresse",
+            allowClear: true
+        });
+    });
+                
     /**
      * Ajax function for update 'chantier_adresse' select field
      */
