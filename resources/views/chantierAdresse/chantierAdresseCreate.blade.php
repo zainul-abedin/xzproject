@@ -61,14 +61,14 @@ $(document).ready(function (){
                 success: function(data){
                     if(data === "success"){
 
-                        /* script for sweet alart
+                        // script for sweet alart
                         swal({
                             icon: 'success',
-                            title: "Great!",
-                            text: "Responsable add successfully",                            
+                            title: "Génial!",
+                            text: "Adresse ajoutée avec succès",                            
                             timer: 1000
                           });
-                         */
+                         
                          
                          // To clean form data
                          form[0].reset(); 

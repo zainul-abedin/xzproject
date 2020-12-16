@@ -278,7 +278,15 @@
                         type: "PUT",
                         data: data,
                         success: function (response) {
-                            console.log(response);
+                            if(response === 'success'){
+                                // script for sweet alart
+                                swal({
+                                    icon: 'success',
+                                    title: "Great!",
+                                    text: "Réunion modifier avec succès",                            
+                                    timer: 1000
+                                });
+                            }
                         }
                     });
 
@@ -312,7 +320,15 @@
                         type: "PUT",
                         data: data,
                         success: function (response) {
-                            console.log(response);
+                            if(response === 'success'){
+                                // script for sweet alart
+                                swal({
+                                    icon: 'success',
+                                    title: "Great!",
+                                    text: "Réunion modifier avec succès",                            
+                                    timer: 1000
+                                });
+                            }
                         }
                     });
                 }

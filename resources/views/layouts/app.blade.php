@@ -14,20 +14,20 @@
 
         <!-- Botstrap css -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        
+
         <!-- jQuery UI 1.12.1 css -->
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-        
+
         <!-- font awesome -->
-       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-        
-       <!-------------------------- Advanced tables css ------------------------>
-       <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"/>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+        <!-------------------------- Advanced tables css ------------------------>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"/>
 
         <!--FullCalendar css -->
         <link href="{{ asset('css/fullcalendar.css') }}" rel="stylesheet"/>
         <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
-        
+
         <!-- select2 css -->
         <link href="{{ asset('css/select2.css') }}" rel="stylesheet"/>
 
@@ -44,26 +44,28 @@
         </style>
 
         <!--------------------------------------- Jquery start -------------------------->
-        
+
         <!---------- jQuery 3.5.1 google cdn ----------------------------------->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        
+
         <!-- Bootstrap js ----------->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-       
+
         <!----------- jQuery UI 1.12.1 google cdn ----------------------------->
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        
+
         <!-------------- Advanced tables js ----------------------------------->
         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-      
-                
+
+        <!-- cdn for sweetalert -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
         <!-- FullCalendar js -->
         <script src="{{ asset('js/fullcalendar.js') }}"></script>
-        
+
         <!-- select2 js --->
         <script src="{{ asset('js/select2.full.js') }}"></script>
-        
+
         <!------ script for Ajax setup for laravel ------->
         <script type="text/javascript">
             $.ajaxSetup({
@@ -72,18 +74,16 @@
                 }
             });
         </script>
-       
 
-        
         <!------------------------------- Jquery end -------------------------->
-       
+
     </head>
     <body>
         <div id="app">
             @yield('navbar')
-            
+
             @yield('message')
-            
+
             <main class="py-4">
                 @yield('content')
             </main>
