@@ -135,19 +135,19 @@
 </div>
 <!----------------- Add event dialog box END -------------------------->
 
-<!---------------- event details start--------------------------------->
+<!---------------- Reunion details start--------------------------------->
 
-<div id="eventDetails">
-    <div id="dialog-body">
-
-        <!-- 
-        reunion details come by ajax
-        from reunion details 
-        -->
-
+<!-- Vertically centered scrollable modal -->
+<!-- Modal -->
+<div id="reunionDetails" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            
+            
+        </div>
     </div>
-
 </div>
+
 
 <!---------------------- java script start ---------------------------->
 
@@ -246,12 +246,8 @@
                     type: 'GET',
                     success: function (response) {
 
-                        $('#eventDetails').dialog({
-                            title: 'Réunion details',
-                            width: 350,
-                            height: 640,
-                            modal: true
-                        }).html(response);
+                        $('#reunionDetails .modal-content').html(response);
+                        $('#reunionDetails').modal('show');
                     }
                 });
 

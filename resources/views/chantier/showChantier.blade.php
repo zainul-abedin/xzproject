@@ -6,7 +6,7 @@
 <div class="container">
     <!------- navbar start -------->
     <nav class="navbar navbar-light shadow-sm" style="background-color: #E9E9E9; margin-bottom: 10px">
-        <a class="navbar-brand" href="{{ route('home') }}" style="font-size: 34px"><i class="fas fa-home"></i></a>
+        <a class="navbar-brand" href="{{ route('chantier.index') }}" style="font-size: 34px"><i class="fas fa-arrow-left"></i></a>
         <!--
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
