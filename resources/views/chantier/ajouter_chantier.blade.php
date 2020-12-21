@@ -28,7 +28,7 @@
                         Sélectionner Location
                 </option>
                 @foreach($locations as $location)
-                    <option value="{{$location->id}}">
+                <option value="{{$location->id}}">
                         {{$location->chantier_adresse->adresse}}
                         @if($location->batiment)
                             {{'/ Bat : '.$location->batiment}}

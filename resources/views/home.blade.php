@@ -6,123 +6,282 @@
 </style>
 <div class="container" style="margin-top: 10px">
     @section('navbar')
-        @include('partials._home-navbar')
+    @include('partials._home-navbar')
     @endsection
 
     <!-- Display error massage's start ------->
     @section('message')
-        @include('partials._message')
+    @include('partials._message')
     @endsection
     <!-- Display error massage's end ------->
 
     @section('content')
-    <button class="btn btn-primary btn-block">Réunion aujourd`hui</button>
-    <div class="alert alert-primary" id="#" role="alert">
-        @foreach($all_reunion_aujourdhui->take(3) as $reunion_aujourdhui )
-            <a href="{{ route('reunion.details', $reunion_aujourdhui->id) }}">
-                {{ date('H:i', strtotime($reunion_aujourdhui->start)).' ' }} 
-                - {{ date('H:i', strtotime($reunion_aujourdhui->end)).' ' }}
-                |{{' '. $reunion_aujourdhui->chantier->location->chantier_adresse->adresse }}
-            </a>
-            <hr class="hr-spaceing-0">            
-        @endforeach        
-        <a data-toggle="modal" data-target="#ReunionAujourdhui" type="button" class="btn btn-outline-info btn-sm" style="padding-top: 2px; margin-top: 7px; color: black;">More....</a>
+
+    <!-------------------------------------------------------------------------->
+    
+    
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+       
+            <div class="carousel-item">
+                <div class="card shadow-sm p-2 mb-3 bg-white rounded" style="height: 24rem;">
+                    <div class="card-header">
+                        Réunions futures
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        @foreach($all_reunion_futures->take(8) as $reunion_futures)
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-12 text-truncate">
+                                    <a href="{{ route('reunion.details', $reunion_futures->id) }}" style="font-size: 0.90rem">
+                                
+                                        {{ date('d/m/yy H:i', strtotime($reunion_futures->start)).' ' }}
+                                        |
+                                        {{' '.$reunion_futures->title}}
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </li>
+                        @endforeach
+                    </ul>
+                    @if(count($all_reunion_futures)>8)
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-center">
+                                <a data-toggle="modal" data-target="#ReunionFutures" >Plus....</a>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+            
+            <div class="carousel-item active">
+                <div class="card shadow-sm p-2 mb-3 bg-white rounded" style="height: 24rem;">
+                    <div class="card-header">
+                        Réunion aujourd`hui
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        @foreach($all_reunion_aujourdhui->take(8) as $reunion_aujourdhui )
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-12 text-truncate">
+                                    <a href="{{ route('reunion.details', $reunion_aujourdhui->id) }}" style="font-size: 0.90rem">
+                                        {{ date('H:i', strtotime($reunion_aujourdhui->start)).' ' }} 
+                                        |{{' '. $reunion_aujourdhui->title }}
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </li>                        
+                        @endforeach
+                        
+                    </ul>
+                    
+                    @if(count($all_reunion_aujourdhui)>8)
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-center">
+                                <a data-toggle="modal" data-target="#ReunionAujourdhui" >Plus....</a>
+                            </div>
+                        </div>
+                    @endif
+                    
+                </div>
+            </div>
+            
+            <div class="carousel-item">
+                <div class="card shadow-sm p-2 mb-3 bg-white rounded" style="height: 24rem;">
+                    <div class="card-header">
+                        Reunions pas terminee
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        @foreach($all_reunion_pas_terminee->take(8) as $reunion_pas_terminee)
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-12 text-truncate">
+                                        <a href="{{ route('reunion.details', $reunion_pas_terminee->id) }}" style="font-size: 0.90rem">
+                                            {{ date('d/m/yy H:i', strtotime($reunion_pas_terminee->start)).' ' }}
+                                            |
+                                            {{' '.$reunion_pas_terminee->title}}
+                                        </a>  
+                                    </div>
+                                </div> 
+                            </li>
+                        @endforeach
+                    </ul>
+                    
+                    @if(count($all_reunion_pas_terminee)>8)
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-center">
+                                <a data-toggle="modal" data-target="#ReunionPasTerminee">Plus....</a>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+            <div class="carousel-item">                
+                <div class="card shadow-sm p-2 mb-3 bg-white rounded" style="height: 24rem;">
+                    <div class="card-header">
+                        Reunions terminee
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        @foreach($all_reunion_terminee->take(8) as $reunion_terminee)
+                            <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-12 text-truncate">
+                                    <a href="{{ route('reunion.details', $reunion_terminee->id) }}" style="font-size: 0.90rem">
+                                        {{ date('d/m/yy H:i', strtotime($reunion_terminee->start)).' ' }}
+                                        |
+                                        {{' '.$reunion_terminee->title}}
+                                    </a> 
+                                </div>
+                            </div>
+                                   
+                            </li>
+                        @endforeach
+                    </ul>
+                    @if(count($all_reunion_terminee)>8)
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-center">
+                                <a data-toggle="modal" data-target="#ReunionTerminee" >Plus....</a>
+                            </div>
+                        </div>
+                    @endif
+                    
+                </div>
+                            
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="fa fa-chevron-left fa-lg" style="color:red;"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="fa fa-chevron-right fa-lg" style="color:red;"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-------------------------------------------------------------------------->
+   
+    
+    
+    
+    
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <a href="{{route('reunion.index')}}" type="button" class="btn btn-outline-secondary">Mes réunion</a>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Second group">
+          <a href="{{ route('chantier.index') }}" type="button" class="btn btn-outline-secondary">Mes chantiers</a>
+        </div>        
     </div>
     
-    <button class="btn btn-primary btn-block">La réunion n'est pas terminée</button>
-    <div class="alert alert-primary" id="#" role="alert">
-        @foreach($all_reunion_pas_terminee->take(3) as $reunion_pas_terminee)
-            <a href="{{ route('reunion.details', $reunion_pas_terminee->id) }}">
-                @if((date('d/m/yy', strtotime($reunion_pas_terminee->start)))==(date('d/m/yy', strtotime($reunion_pas_terminee->end))))
-                {{ date('d/m/yy H:i', strtotime($reunion_pas_terminee->start)).' ' }} - {{ date('H:i', strtotime($reunion_pas_terminee->end)).' ' }} 
-                @else
-                {{ date('d/m/yy H:i', strtotime($reunion_pas_terminee->start)).' ' }} - {{ date('d/m/yy H:i', strtotime($reunion_pas_terminee->end)).' ' }}                
-                @endif
-                |
-                {{ ' '.$reunion_pas_terminee->chantier->location->chantier_adresse->adresse }}
-                @if($reunion_pas_terminee->chantier->location->batiment)
-                {{'/ Bat : '.$reunion_pas_terminee->chantier->location->batiment}}
-                @endif
-                @if($reunion_pas_terminee->chantier->location->escalier)
-                    {{'/ Esc : '.$reunion_pas_terminee->chantier->location->escalier}}
-                @endif
-                @if($reunion_pas_terminee->chantier->location->etage)
-                    {{'/ Eta : '.$reunion_pas_terminee->chantier->location->etage}}
-                @endif
-                @if($reunion_pas_terminee->chantier->location->porte)
-                    {{'/ Por : '.$reunion_pas_terminee->chantier->location->porte}}
-                @endif
-            </a>            
-            <hr class="hr-spaceing-0">
-        @endforeach        
-        <a data-toggle="modal" data-target="#ReunionPasTerminee" type="button" class="btn btn-outline-info btn-sm" style="padding-top: 2px; margin-top: 7px; color: black;" >More....</a>
-    </div>
     
-    <a href="{{route('reunion.index')}}" type="button" class="btn btn-primary  btn-block" >Mes réunion</a>
-    <a href="{{ route('chantier.index') }}" type="button" class="btn btn-primary btn-block">Mes chantiers</a>
+    
+    
 </div> 
 
 <!-- Modal for Réunion aujourd`hui -->
 <div class="modal fade" id="ReunionAujourdhui" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h6 class="modal-title" id="staticBackdropLabel">Réunion aujourd`hui</h6>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        @foreach($all_reunion_aujourdhui as $reunion_aujourdhui )
-            <a href="{{ route('reunion.details', $reunion_aujourdhui->id) }}">
-                {{ date('H:i', strtotime($reunion_aujourdhui->start)).' ' }}
-                - {{ date('H:i', strtotime($reunion_aujourdhui->end)).' ' }}
-                |{{' '. $reunion_aujourdhui->chantier->location->chantier_adresse->adresse }}
-            </a>
-            <hr class="hr-spaceing-0">            
-        @endforeach 
-      </div>
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="staticBackdropLabel">Réunion aujourd`hui</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @foreach($all_reunion_aujourdhui as $reunion_aujourdhui )
+                <a href="{{ route('reunion.details', $reunion_aujourdhui->id) }}">
+                    {{ date('H:i', strtotime($reunion_aujourdhui->start)).' ' }}
+                    |{{' '. $reunion_aujourdhui->title}}
+                </a>
+                <hr class="hr-spaceing-0">            
+                @endforeach 
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<!---------------- Reunion details start--------------------------------->        
-<div id="reunionDetails">
-    <div id="dialog-body">
-        <!-- 
-        reunion details come by ajax
-        from reunion details 
-        -->
+
+<!-- Modal for  reunion futures -->
+<div class="modal fade" id="ReunionFutures" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="staticBackdropLabel">Réunion futures</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @foreach($all_reunion_futures as $reunion_futures)
+                <a href="{{ route('reunion.details', $reunion_futures->id) }}">
+                    
+                    {{ date('d/m/yy H:i', strtotime($reunion_futures->start)).' ' }} 
+                    |
+                    {{' '.$reunion_futures->chantier->location->chantier_adresse->adresse }}
+                </a>            
+                <hr class="hr-spaceing-0">
+                @endforeach
+            </div>
+        </div>
     </div>
-</div>        
-<!----------------Reunion details end ----------------------------------->
+</div>
 
 <!-- Modal for La réunion n'est pas terminée -->
 <div class="modal fade" id="ReunionPasTerminee" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h6 class="modal-title" id="staticBackdropLabel">La réunion n'est pas terminée</h6>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        @foreach($all_reunion_pas_terminee as $reunion_pas_terminee)
-            <a href="{{ route('reunion.details', $reunion_pas_terminee->id) }}">
-                @if((date('d/m/yy', strtotime($reunion_pas_terminee->start)))==(date('d/m/yy', strtotime($reunion_pas_terminee->end))))
-                {{ date('d/m/yy H:i', strtotime($reunion_pas_terminee->start)).' ' }} - {{ date('H:i', strtotime($reunion_pas_terminee->end)).' ' }} 
-                @else
-                {{ date('d/m/yy H:i', strtotime($reunion_pas_terminee->start)).' ' }} - {{ date('d/m/yy H:i', strtotime($reunion_pas_terminee->end)).' ' }}                
-                @endif
-                |
-                {{' '.$reunion_pas_terminee->chantier->location->chantier_adresse->adresse }}
-            </a>            
-            <hr class="hr-spaceing-0">
-        @endforeach
-      </div>
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="staticBackdropLabel">Réunions n'est pas terminée</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @foreach($all_reunion_pas_terminee as $reunion_pas_terminee)
+                <a href="{{ route('reunion.details', $reunion_pas_terminee->id) }}">
+                    
+                    {{ date('d/m/yy H:i', strtotime($reunion_pas_terminee->start)).' ' }}                   
+                    |
+                    {{' '.$reunion_pas_terminee->chantier->location->chantier_adresse->adresse }}
+                </a>            
+                <hr class="hr-spaceing-0">
+                @endforeach
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
+<!-- Modal for Réunions terminée -->
+<div class="modal fade" id="ReunionTerminee" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="staticBackdropLabel">Réunions terminée</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @foreach($all_reunion_terminee as $reunion_terminee)
+                <a href="{{ route('reunion.details', $reunion_terminee->id) }}">
+                    {{ date('d/m/yy H:i', strtotime($reunion_terminee->start)).' ' }}
+                    |
+                    {{' '.$reunion_terminee->chantier->location->chantier_adresse->adresse }}
+                </a>            
+                <hr class="hr-spaceing-0">
+                @endforeach
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

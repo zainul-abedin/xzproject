@@ -26,6 +26,7 @@ class CreateContactsTable extends Migration
             $table->string('mail_professionnel', 50)->nullable();
             $table->string('mail_personnel', 50)->nullable();
             $table->string('observation')->nullable();
+            $table->tinyInteger('statut')->default(1);
             $table->timestamps();
         });
     }

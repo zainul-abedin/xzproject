@@ -34,7 +34,7 @@
             <button class="btn btn-outline-secondary" id="allChantiers" type="button" style="font-size: 16px"><i class="fas fa-redo-alt"></i></button>
         </div>
     </div>
-
+    
     <div class="input-group mb-3">
         <input type="text" class="form-control" id="start" name="start" value="{{ $startEndTime->startTime }}" >
     </div>

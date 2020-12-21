@@ -23,7 +23,7 @@ class CreateContactReunionTable extends Migration
             $table->foreign('reunion_id')->references('id')->on('contacts');
             
             $table->string('activite_de_contact', 100)->nullable();
-            $table->string('statut', 50);
+            $table->tinyInteger('statut')->default(1);
             
             $table->timestamps();
         });

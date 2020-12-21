@@ -20,9 +20,6 @@ class CreateChantiersTable extends Migration
             $table->unsignedBigInteger('location_id');
             $table->foreign('location_id')->references('id')->on('locations');
             
-            $table->unsignedBigInteger('responsable_id')->nullable();
-            $table->foreign('responsable_id')->references('id')->on('responsables');
-            
             $table->text('demande_objact');
             $table->string('urgence',50);
             $table->string('travaux_type',50);

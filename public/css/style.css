@@ -204,3 +204,58 @@
 */
 
 /*********************** btn-pluse end *****************************/
+
+.media, .mt-3 {
+    margin-top: 0px !important;
+}
+
+/************************ carousel CSS start ***************************/
+.carousel-control-next-icon:after
+{
+  content: '>';
+  padding: 5px;
+  font-size: 15px;
+  color: red !important;
+  
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 15px;
+  color: red !important;
+}
+
+.carousel-control-next, .carousel-control-prev {
+    width: 5%
+}
+
+.carousel-indicators li {
+    background-color: #EA3833;        
+}
+.carousel-indicators .active {   
+    background-color: #EC0E11;
+}
+/************************ carousel CSS end ***************************/
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 2px 1.25rem;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+}
+ 
+/**************** for ptint limited string  **************************/
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.mt-0, .my-0 {
+    margin-top: .25rem!important;
+}
+
+.media,i{
+    margin-top: .25rem!important;
+}

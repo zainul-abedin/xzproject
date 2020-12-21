@@ -21,9 +21,9 @@
         <!-- font awesome -->
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
-        <!-------------------------- Advanced tables css ------------------------>
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"/>
-
+        <!-------- DataTable css ------------------------->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+        
         <!--FullCalendar css -->
         <link href="{{ asset('css/fullcalendar.css') }}" rel="stylesheet"/>
         <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
@@ -39,7 +39,6 @@
         <style>
             body {
                 font-family: 'Nunito';
-                background-color:#F0F0F0;
             }
         </style>
 
@@ -53,10 +52,14 @@
 
         <!----------- jQuery UI 1.12.1 google cdn ----------------------------->
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        
+        <!-------- dataTable js ----->
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 
-        <!-------------- Advanced tables js ----------------------------------->
-        <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-
+        <!-------- dataTable Bootstrap4 js----->
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+        <!----- Bootstrap Bundle with Popper END ---->
+        
         <!-- cdn for sweetalert -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 

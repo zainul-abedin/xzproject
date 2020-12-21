@@ -29,7 +29,14 @@ class Responsable extends Model
      */
     public function chantiers() 
     {
-        return $this->hasMany('App\Models\Chantier');
+        
+        return $this->belongsToMany('App\Models\Chantier')
+                ->withPivot('id')
+                ->withPivot('chantier_id')
+                ->withPivot('responsable_id')
+                ->withPivot('activite_de_responsable')
+                ->withPivot('statut')
+                ->withTimestamps();
     }
     
     /**

@@ -11,7 +11,6 @@ class Chantier extends Model
     
     protected $fillable = [
         'location_id',
-        'responsable_id',
         'demande_objact',
         'urgence',
         'travaux_type',
@@ -35,9 +34,15 @@ class Chantier extends Model
       * 
       * @return type One to Many relation between responsables&chantiers table.
       */
-    public function responsable()
+    public function responsables()
     {
-        return $this->belongsTo('App\Models\Responsable');
+       return $this->belongsToMany('App\Models\Responsable')
+                ->withPivot('id')
+                ->withPivot('chantier_id')
+                ->withPivot('responsable_id')
+                ->withPivot('activite_de_responsable')
+                ->withPivot('statut')
+                ->withTimestamps();
     }
 
 

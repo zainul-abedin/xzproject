@@ -2,12 +2,12 @@
 
 @section('content')
 
-<div class="container">
+<div class="container small">
     <nav class="navbar navbar-light" style="background-color: #E9E9E9; margin-bottom: 10px">
-        <a class="navbar-brand" href="{{ route('home') }}" style="font-size: 34px"><i class="fas fa-home"></i></a>
-        <button class="btn btn-light ml-auto mr-1" data-toggle="modal" data-target="#allReunionList" style="font-size: 30px; background-color: #E9E9E9"><i class="fas fa-list"></i></button>
+        <a class="navbar-brand" href="{{ route('home') }}" style="font-size: 30px"><i class="fas fa-home"></i></a>
+        <a class="btn btn-light" href="{{ route('chantier.create') }}" target="_blank"  style="font-size: 26px; background-color: #E9E9E9"><i class="fas fa-plus"></i></a>
     </nav> 
-    
+
     <!-- Display error massage's start ------->    
     @if($errors->any())
     <div class="alert alert-danger">
@@ -30,7 +30,7 @@
     @endif
     <!-- Display error massage's end ------->  
     
-    <table id="chantierTable">
+    <table id="chantierTable" class="table table-striped table-bordered small">
         <thead>
             <tr>
                 <th>Adresses</th>
@@ -43,22 +43,17 @@
             <tr>
                 <td>
                     <a href="{{ route('chantier.show', $chantier->id) }}">
-                        {{ $chantier->location->chantier_adresse->adresse }}
+                        {{ mb_strimwidth($chantier->location->chantier_adresse->adresse, 0, 35, "..") }}
+                        
                     </a>
                 </td>
                 <td>
                     <a href="{{ route('chantier.show', $chantier->id) }}">
-                        @if($chantier->location->batiment)
-                            {{' Bat : '.$chantier->location->batiment.'/'}}
-                        @endif
-                        @if($chantier->location->escalier)
-                            {{' Esc : '.$chantier->location->escalier.'/'}}
-                        @endif
                         @if($chantier->location->etage)
-                            {{' Eta : '.$chantier->location->etage.'/'}}
+                        {{' Eta : '.$chantier->location->etage.','}}
                         @endif
                         @if($chantier->location->porte)
-                            {{' Por : '.$chantier->location->porte.'/'}}
+                        {{' Por : '.$chantier->location->porte}}
                         @endif 
                     </a>
                 </td>
@@ -67,29 +62,20 @@
                         {{date('d/m/yy', strtotime($chantier->created_at)) }}
                     </a>
                 </td>
-            </tr>
-            @endforeach
+            </tr>            
+            @endforeach        
         </tbody>
     </table>
 
-    
-</div>
-
 <script>
-    /*-------- script for datatable start ----------------------------*/ 
-    $(document).ready( function () {
-        $('#chantierTable').DataTable({
-            "language": {
-                "lengthMenu": "Afficher _MENU_ enregistrements par page",
-                "zeroRecords": "Rien trouvé - désolé",
-                "info": "Affichage de la page _PAGE_ de _PAGES_",
-                "infoEmpty": "Aucun enregistrement disponible",
-                "infoFiltered": "(filtré de _MAX_ enregistrements totaux)",
-                "search": "Chercher:"
-            }
+    /*-------- script for datatable start ----------------------------*/
+    $(document).ready(function () {    
+        // DataTable
+        var table = $('#chantierTable').DataTable({
+
         });
-    } );
-    
+    });
+
     /*-------- script for datatable start ----------------------------*/
 </script>
 

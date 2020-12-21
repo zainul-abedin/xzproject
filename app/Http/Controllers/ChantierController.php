@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chantier;
 use App\Models\Location;
+use App\Models\Responsable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -95,6 +96,7 @@ class ChantierController extends Controller
     public function show(Chantier $chantier)
     {
         $data['chantier'] = $chantier;
+        $data['responsables'] = Responsable::all();
         
         return view('chantier.showChantier',$data);
     }

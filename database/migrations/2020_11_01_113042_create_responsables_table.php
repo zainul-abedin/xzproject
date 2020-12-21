@@ -18,7 +18,8 @@ class CreateResponsablesTable extends Migration
             
             $table->unsignedBigInteger('contact_id')->nullable();
             $table->foreign('contact_id')->references('id')->on('contacts');
-            $table->string('statut',50);
+            $table->string('responsable_type',50);
+            $table->tinyInteger('statut')->default(1);
             
             $table->timestamps();
         });

@@ -24,7 +24,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('contact.ajouter_contact');
+        return view('contact.createContact');
     }
 
     /**

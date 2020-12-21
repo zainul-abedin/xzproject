@@ -50,8 +50,7 @@ class Contact extends Model
      * with Intermediate table property
      */
     public function reunions() 
-    {
-    
+    {    
         return $this->belongsToMany('App\Models\Reunion')
                 ->withPivot('id')
                 ->withPivot('contact_id')
@@ -59,5 +58,10 @@ class Contact extends Model
                 ->withPivot('activite_de_contact')
                 ->withPivot('statut')
                 ->withTimestamps();
+    }
+    
+    public function responsables() 
+    {
+        return $this->hasMany('App\Models\Responsable');
     }
 }

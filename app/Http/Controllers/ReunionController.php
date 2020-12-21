@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reunion;
 use App\Models\Chantier;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -42,8 +43,8 @@ class ReunionController extends Controller
             $reunions[$i] = array(
                 'id'=> $reunion1->id,
                 'chantier_id' => $reunion1->chantier_id,
-                'title' => $reunion1->chantier->location->chantier_adresse->adresse,
-                'adresse' => $reunion1->title,
+                'title' => $reunion1->title,
+                'adresse' => $reunion1->chantier->location->chantier_adresse->adresse,
                 'start' => $reunion1->start,
                 'end' => $reunion1->end,
                 'allDay' => $reunion1->allDay,
@@ -71,7 +72,8 @@ class ReunionController extends Controller
      */
     public function create(Request $request)
     {
-        $data['chantiers'] = Chantier::all();
+        $data['contacts'] = Contact::orderBy('nom', 'ASC')->orderBy('nom_de_societe', 'ASC')->get();
+        $data['chantiers'] = Chantier::orderBy('created_at', 'DESC')->get();
         $data['startEndTime'] = $request;
         return view('reunion.createReunion',$data);
     }

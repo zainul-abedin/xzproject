@@ -17,14 +17,14 @@ class CreateChantierContactTable extends Migration
             $table->id();
             
             $table->unsignedBigInteger('chantier_id');
-            $table->foreign('chantier_id')->references('id')->on('contacts');
+            $table->foreign('chantier_id')->references('id')->on('chantiers');
             
             $table->unsignedBigInteger('contact_id');
-            $table->foreign('contact_id')->references('id')->on('chantiers');
+            $table->foreign('contact_id')->references('id')->on('contacts');
             
             $table->string('activite_de_contact', 100)->nullable();
             
-            $table->string('statut', 50);
+            $table->tinyInteger('statut')->default(1);
             
             $table->timestamps();
         });

@@ -8,6 +8,10 @@
         font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
         font-size: 14px;
     }
+                    
+    #allReunionList {
+        display: none;
+    }
 
     #addEvent{
         display: none;
@@ -70,13 +74,15 @@
                 </button>
             </div>
             <div class="modal-body">
+                
+                
 
-                <table id="reunionsTable">
+                <table id="reunionsTable" class="table table-striped table-bordered small">
                     <thead>
                         <tr>
-                            <th>H.Reunions</th>
+                            <th>Heure</th>
+                            <th>Titles</th>
                             <th>Adresses</th>
-                            <th>Chantiers commencer</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -85,21 +91,19 @@
                         <tr>
                             <td>
                                 <a href="{{ route('reunion.details', $reunion->id) }}">
-                                @if((date('d/m/yy', strtotime($reunion->start)))==(date('d/m/yy', strtotime($reunion->end))))
-                                {{ date('d/m/yy | H:i', strtotime($reunion->start)).' ' }} - {{ date('H:i', strtotime($reunion->end)).' ' }} 
-                                @else
-                                {{ date('d/m/yy | H:i', strtotime($reunion->start)).' ' }} - {{ date('d/m/yy | H:i', strtotime($reunion->end)).' ' }}                
-                                @endif
+                                
+                                {{ date('d/m/yy | H:i', strtotime($reunion->start)) }}
+                                
                                 </a>
                             </td>
                             <td>
                                 <a href="{{ route('reunion.details', $reunion->id) }}">
-                                {{$reunion->chantier->location->chantier_adresse->adresse }}
+                                {{$reunion->title }}
                                 </a>
                             </td>
                             <td>
                                 <a href="{{ route('reunion.details', $reunion->id) }}">
-                                {{date('d/m/yy', strtotime($reunion->chantier->created_at)) }}
+                                {{ mb_strimwidth($reunion->chantier->location->chantier_adresse->adresse, 0, 32, "..") }}
                                 </a>
                             </td>
                         </tr>
@@ -107,6 +111,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                
             </div>
         </div>
     </div>
@@ -371,16 +376,10 @@
      
     /*-------- script for datatable start ----------------------------*/ 
     $(document).ready( function () {
-        $('#reunionsTable').DataTable({
-            "language": {
-                "lengthMenu": "Afficher _MENU_ enregistrements par page",
-                "zeroRecords": "Rien trouvé - désolé",
-                "info": "Affichage de la page _PAGE_ de _PAGES_",
-                "infoEmpty": "Aucun enregistrement disponible",
-                "infoFiltered": "(filtré de _MAX_ enregistrements totaux)",
-                "search": "Chercher:"
-            }
-        });
+		 
+        // DataTable
+        var table = $('#reunionsTable').DataTable({});
+        
     } );
     
     /*-------- script for datatable start ----------------------------*/
