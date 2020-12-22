@@ -137,8 +137,8 @@
 
 <!---------------- Reunion details start--------------------------------->
 
-<!-- Vertically centered scrollable modal -->
-<!-- Modal -->
+
+<!-- reunionDetails Modal -->
 <div id="reunionDetails" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

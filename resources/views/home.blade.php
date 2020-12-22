@@ -36,16 +36,19 @@
                         Réunions futures
                     </div>
                     <ul class="list-group list-group-flush">
+                        
                         @foreach($all_reunion_futures->take(8) as $reunion_futures)
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-12 text-truncate">
-                                    <a href="{{ route('reunion.details', $reunion_futures->id) }}" style="font-size: 0.90rem">
-                                
+                                    <a  reunion_id ="{{$reunion_futures->id}}" style="font-size: 0.90rem">                                        
+
                                         {{ date('d/m/yy H:i', strtotime($reunion_futures->start)).' ' }}
                                         |
                                         {{' '.$reunion_futures->title}}
+                                       
                                     </a>
+                                    
                                 </div>
                             </div>
                             
@@ -72,7 +75,7 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-12 text-truncate">
-                                    <a href="{{ route('reunion.details', $reunion_aujourdhui->id) }}" style="font-size: 0.90rem">
+                                    <a reunion_id ="{{$reunion_aujourdhui->id}}" style="font-size: 0.90rem">
                                         {{ date('H:i', strtotime($reunion_aujourdhui->start)).' ' }} 
                                         |{{' '. $reunion_aujourdhui->title }}
                                     </a>
@@ -105,7 +108,7 @@
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-12 text-truncate">
-                                        <a href="{{ route('reunion.details', $reunion_pas_terminee->id) }}" style="font-size: 0.90rem">
+                                        <a reunion_id ="{{$reunion_pas_terminee->id}}" style="font-size: 0.90rem">
                                             {{ date('d/m/yy H:i', strtotime($reunion_pas_terminee->start)).' ' }}
                                             |
                                             {{' '.$reunion_pas_terminee->title}}
@@ -135,7 +138,7 @@
                             <li class="list-group-item">
                             <div class="row">
                                 <div class="col-12 text-truncate">
-                                    <a href="{{ route('reunion.details', $reunion_terminee->id) }}" style="font-size: 0.90rem">
+                                    <a reunion_id ="{{$reunion_terminee->id}}" style="font-size: 0.90rem">
                                         {{ date('d/m/yy H:i', strtotime($reunion_terminee->start)).' ' }}
                                         |
                                         {{' '.$reunion_terminee->title}}
@@ -167,12 +170,9 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    
     <!-------------------------------------------------------------------------->
    
-    
-    
-    
-    
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
             <a href="{{route('reunion.index')}}" type="button" class="btn btn-outline-secondary">Mes réunion</a>
@@ -181,11 +181,19 @@
           <a href="{{ route('chantier.index') }}" type="button" class="btn btn-outline-secondary">Mes chantiers</a>
         </div>        
     </div>
-    
-    
-    
-    
+     
 </div> 
+
+<!-- reunionDetails Modal -->
+<div id="reunionDetails" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            
+            
+        </div>
+    </div>
+</div>
+
 
 <!-- Modal for Réunion aujourd`hui -->
 <div class="modal fade" id="ReunionAujourdhui" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -284,4 +292,28 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $(document).on('click', 'a[reunion_id]', function (e) {
+            
+            var reunion_id = $(this).attr('reunion_id');
+            var url = '{{ route("reunion.show", ":id") }}';
+                url = url.replace(":id", reunion_id);
+
+                $.ajax({
+
+                    url: url,
+                    type: 'GET',
+                    success: function (response) {
+
+                        $('#reunionDetails .modal-content').html(response);
+                        $('#reunionDetails').modal('show');
+                    }
+                });
+        }); 
+    });
+    
+</script>
+
 @endsection

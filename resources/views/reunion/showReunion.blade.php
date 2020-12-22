@@ -10,7 +10,7 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>           
 </div>
 <div class="container">
-    <div class="row" style="margin-bottom: 4px">
+    <div class="row" style="margin-bottom: 10px; margin-top: 10px">
         <div class="col-1">
             <i class="fas fa-heading" style="font-size: 18px"></i>
         </div>
@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="row" style="margin-bottom: 4px">
+    <div class="row" style="margin-bottom: 10px">
         <div class="col-1">
             <i class="fas fa-map-marker-alt" style="font-size: 18px"></i>
         </div>
@@ -30,7 +30,7 @@
 
     @if($reunion->allDay == 0)
     @if((date('d/m/yy', strtotime($reunion->start)))==(date('d/m/yy', strtotime($reunion->end))))
-    <div class="row" style="margin-bottom: 4px">
+    <div class="row" style="margin-bottom: 10px">
         <div class="col-1">
             <i class="fas fa-clock" style="font-size: 18px"></i> 
         </div>
@@ -40,7 +40,7 @@
 
     </div>
     @else
-    <div class="row" style="margin-bottom: 4px">
+    <div class="row" style="margin-bottom: 10px">
         <div class="col-1">
             <i class="fas fa-clock" style="font-size: 18px"></i>  
         </div>
@@ -52,7 +52,7 @@
     @endif
 
     @if($reunion->allDay == 1)
-    <div class="row" style="margin-bottom: 4px">
+    <div class="row" style="margin-bottom: 10px">
         <div class="col-1">
             <i class="fas fa-clock" style="font-size: 18px"></i>
         </div>
@@ -63,7 +63,7 @@
     @endif
 
     @if($reunion->statut === 0)  
-    <div class="row" style="margin-bottom: 4px">
+    <div class="row" style="margin-bottom: 10px">
         <div class="col-1">
             <i class="fas fa-info-circle" style="font-size: 18px"></i> 
         </div>
@@ -72,7 +72,7 @@
         </div>
     </div>
     @elseif($reunion->statut === 1)
-    <div class="row" style="margin-bottom: 4px">
+    <div class="row" style="margin-bottom: 10px">
         <div class="col-1">
             <i class="fas fa-info-circle" style="font-size: 18px"></i> 
         </div>
@@ -82,7 +82,7 @@
     </div>
     @endif
 
-    <div class="row" style="margin-bottom: 4px">
+    <div class="row" style="margin-bottom: 10px">
         <div class="col-1">
             <i class="fas fa-feather" style="font-size: 18px"></i> 
         </div>
@@ -91,7 +91,7 @@
         </div>
     </div>
 
-    <div class="row" style="margin-bottom: 4px"> 
+    <div class="row" style="margin-bottom: 10px"> 
         <div class="col-1">
             <i class="fas fa-paperclip" style="font-size: 18px"></i>
         </div>
@@ -100,7 +100,7 @@
         </div>
     </div>
 
-    <div class="row" style="margin-bottom: 4px">
+    <div class="row" style="margin-bottom: 10px">
         <div class="col-1">
             <i class="fas fa-user-cog" style="font-size: 18px"></i>
         </div>
