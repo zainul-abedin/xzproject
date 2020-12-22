@@ -5,6 +5,7 @@
         <group>
             <file>file:/var/www/html/xzproject/resources/views/reunion/indexReunion.blade.php</file>
             <file>file:/var/www/html/xzproject/resources/views/home.blade.php</file>
+            <file>file:/var/www/html/xzproject/resources/views/reunion/createReunion.blade.php</file>
             <file>file:/var/www/html/xzproject/resources/views/reunion/showReunion.blade.php</file>
         </group>
     </open-files>

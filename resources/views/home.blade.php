@@ -184,40 +184,6 @@
      
 </div> 
 
-<!-- reunionDetails Modal -->
-<div id="reunionDetails" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            
-            
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal for Réunion aujourd`hui -->
-<div class="modal fade" id="ReunionAujourdhui" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="modal-title" id="staticBackdropLabel">Réunion aujourd`hui</h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                @foreach($all_reunion_aujourdhui as $reunion_aujourdhui )
-                <a href="{{ route('reunion.details', $reunion_aujourdhui->id) }}">
-                    {{ date('H:i', strtotime($reunion_aujourdhui->start)).' ' }}
-                    |{{' '. $reunion_aujourdhui->title}}
-                </a>
-                <hr class="hr-spaceing-0">            
-                @endforeach 
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <!-- Modal for  reunion futures -->
 <div class="modal fade" id="ReunionFutures" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -231,7 +197,7 @@
             </div>
             <div class="modal-body">
                 @foreach($all_reunion_futures as $reunion_futures)
-                <a href="{{ route('reunion.details', $reunion_futures->id) }}">
+                <a reunion_id ="{{$reunion_futures->id}}" style="font-size: 0.90rem">
                     
                     {{ date('d/m/yy H:i', strtotime($reunion_futures->start)).' ' }} 
                     |
@@ -243,6 +209,31 @@
         </div>
     </div>
 </div>
+
+<!-- Modal for Réunion aujourd`hui -->
+<div class="modal fade" id="ReunionAujourdhui" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="staticBackdropLabel">Réunion aujourd`hui</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @foreach($all_reunion_aujourdhui as $reunion_aujourdhui )
+                <a reunion_id ="{{$reunion_aujourdhui->id}}" style="font-size: 0.90rem">
+                    {{ date('H:i', strtotime($reunion_aujourdhui->start)).' ' }}
+                    |{{' '. $reunion_aujourdhui->title}}
+                </a>
+                <hr class="hr-spaceing-0">            
+                @endforeach 
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <!-- Modal for La réunion n'est pas terminée -->
 <div class="modal fade" id="ReunionPasTerminee" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -256,7 +247,7 @@
             </div>
             <div class="modal-body">
                 @foreach($all_reunion_pas_terminee as $reunion_pas_terminee)
-                <a href="{{ route('reunion.details', $reunion_pas_terminee->id) }}">
+                <a reunion_id ="{{$reunion_pas_terminee->id}}" style="font-size: 0.90rem">
                     
                     {{ date('d/m/yy H:i', strtotime($reunion_pas_terminee->start)).' ' }}                   
                     |
@@ -281,7 +272,7 @@
             </div>
             <div class="modal-body">
                 @foreach($all_reunion_terminee as $reunion_terminee)
-                <a href="{{ route('reunion.details', $reunion_terminee->id) }}">
+                <a reunion_id ="{{$reunion_terminee->id}}" style="font-size: 0.90rem">
                     {{ date('d/m/yy H:i', strtotime($reunion_terminee->start)).' ' }}
                     |
                     {{' '.$reunion_terminee->chantier->location->chantier_adresse->adresse }}
@@ -289,6 +280,16 @@
                 <hr class="hr-spaceing-0">
                 @endforeach
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- reunionDetails Modal -->
+<div id="reunionDetails" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            
+            
         </div>
     </div>
 </div>
