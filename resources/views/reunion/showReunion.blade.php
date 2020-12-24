@@ -1,11 +1,11 @@
 <div class="modal-header">
-    <a href="{{ route('reunion.edit', $reunion->id) }}" target="_blank" type="button" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 3px;;"><i class="far fa-edit"></i></a>
-    <button type="button" id="trash" aria-hidden="true" style="font-size:22px; color: red; background-color: white; margin-right: 3px;"><i class="far fa-trash-alt"></i></button>
-    <button type="button" id="envelope" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 3px;"><i class="far fa-envelope"></i></button>
-    <button type="button" id="camera" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 3px;"><i class="fas fa-camera"></i></button>
-    <button type="button" id="paperclip" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 3px;"><i class="far fa-paperclip"></i></button>
-    <button type="button" id="user-shield" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 3px;"><i class="fas fa-user-shield"></i></button>
-    <button type="button" id="users" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 3px;"><i class="fas fa-users"></i></button>   
+    <a href="{{ route('reunion.edit', $reunion->id) }}" target="_blank" type="button" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 2px;;"><i class="far fa-edit"></i></a>
+    <button type="button" id="trash" aria-hidden="true" style="font-size:22px; color: red; background-color: white; margin-right: 2px;"><i class="far fa-trash-alt"></i></button>
+    <button type="button" id="envelope" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 2px;"><i class="far fa-envelope"></i></button>
+    <button type="button" id="camera" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 2px;"><i class="fas fa-camera"></i></button>
+    <button type="button" id="paperclip" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 2px;"><i class="far fa-paperclip"></i></button>
+    <button type="button" id="user-shield" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 2px;"><i class="fas fa-user-shield"></i></button>
+    <button type="button" id="users" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 2px;"><i class="fas fa-users"></i></button>   
     <button type="button" id="list" aria-hidden="true" style="font-size:22px; background-color: white"><i class="fas fa-list"></i></button>
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>           
 </div>

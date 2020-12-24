@@ -75,8 +75,6 @@
             </div>
             <div class="modal-body">
                 
-                
-
                 <table id="reunionsTable" class="table table-striped table-bordered small">
                     <thead>
                         <tr>

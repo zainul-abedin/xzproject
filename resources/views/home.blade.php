@@ -20,49 +20,71 @@
     <!-------------------------------------------------------------------------->
     
     
-
     <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+           
         </ol>
         <div class="carousel-inner">
-       
+            
             <div class="carousel-item">
                 <div class="card shadow-sm p-2 mb-3 bg-white rounded" style="height: 24rem;">
                     <div class="card-header">
-                        Réunions futures
+                        Reunions pas terminee
                     </div>
                     <ul class="list-group list-group-flush">
-                        
-                        @foreach($all_reunion_futures->take(8) as $reunion_futures)
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-12 text-truncate">
-                                    <a  reunion_id ="{{$reunion_futures->id}}" style="font-size: 0.90rem">                                        
-
-                                        {{ date('d/m/yy H:i', strtotime($reunion_futures->start)).' ' }}
-                                        |
-                                        {{' '.$reunion_futures->title}}
-                                       
-                                    </a>
-                                    
-                                </div>
-                            </div>
-                            
-                        </li>
+                        @foreach($all_reunion_pas_terminee->take(3) as $reunion_pas_terminee)
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-12 text-truncate">
+                                        <a reunion_id ="{{$reunion_pas_terminee->id}}" style="font-size: 0.90rem">
+                                            {{ date('d/m/yy H:i', strtotime($reunion_pas_terminee->start)).' ' }}
+                                            |
+                                            {{' '.$reunion_pas_terminee->title}}
+                                        </a>  
+                                    </div>
+                                </div> 
+                            </li>
                         @endforeach
                     </ul>
-                    @if(count($all_reunion_futures)>8)
+                    
+                    @if(count($all_reunion_pas_terminee)>3)
+                    <div class="card-footer">
+                            <div class="d-flex justify-content-center">
+                                <a data-toggle="modal" data-target="#ReunionPasTerminee">Plus....</a>
+                            </div>
+                        </div>
+                    @endif
+                    <div class="card-header" style="margin-top: 8px;">
+                        Reunions terminee
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        @foreach($all_reunion_terminee->take(3) as $reunion_terminee)
+                            <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-12 text-truncate">
+                                    <a reunion_id ="{{$reunion_terminee->id}}" style="font-size: 0.90rem">
+                                        {{ date('d/m/yy H:i', strtotime($reunion_terminee->start)).' ' }}
+                                        |
+                                        {{' '.$reunion_terminee->title}}
+                                    </a> 
+                                </div>
+                            </div>
+                                   
+                            </li>
+                        @endforeach
+                    </ul>
+                    @if(count($all_reunion_terminee)>3)
                         <div class="card-footer">
                             <div class="d-flex justify-content-center">
-                                <a data-toggle="modal" data-target="#ReunionFutures" >Plus....</a>
+                                <a data-toggle="modal" data-target="#ReunionTerminee" >Plus....</a>
                             </div>
                         </div>
                     @endif
                 </div>
+                
             </div>
             
             <div class="carousel-item active">
@@ -97,68 +119,39 @@
                     
                 </div>
             </div>
-            
             <div class="carousel-item">
                 <div class="card shadow-sm p-2 mb-3 bg-white rounded" style="height: 24rem;">
                     <div class="card-header">
-                        Reunions pas terminee
+                        Réunions futures
                     </div>
                     <ul class="list-group list-group-flush">
-                        @foreach($all_reunion_pas_terminee->take(8) as $reunion_pas_terminee)
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-12 text-truncate">
-                                        <a reunion_id ="{{$reunion_pas_terminee->id}}" style="font-size: 0.90rem">
-                                            {{ date('d/m/yy H:i', strtotime($reunion_pas_terminee->start)).' ' }}
-                                            |
-                                            {{' '.$reunion_pas_terminee->title}}
-                                        </a>  
-                                    </div>
-                                </div> 
-                            </li>
-                        @endforeach
-                    </ul>
-                    
-                    @if(count($all_reunion_pas_terminee)>8)
-                        <div class="card-footer">
-                            <div class="d-flex justify-content-center">
-                                <a data-toggle="modal" data-target="#ReunionPasTerminee">Plus....</a>
-                            </div>
-                        </div>
-                    @endif
-                </div>
-            </div>
-            <div class="carousel-item">                
-                <div class="card shadow-sm p-2 mb-3 bg-white rounded" style="height: 24rem;">
-                    <div class="card-header">
-                        Reunions terminee
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        @foreach($all_reunion_terminee->take(8) as $reunion_terminee)
-                            <li class="list-group-item">
+                        
+                        @foreach($all_reunion_futures->take(8) as $reunion_futures)
+                        <li class="list-group-item">
                             <div class="row">
                                 <div class="col-12 text-truncate">
-                                    <a reunion_id ="{{$reunion_terminee->id}}" style="font-size: 0.90rem">
-                                        {{ date('d/m/yy H:i', strtotime($reunion_terminee->start)).' ' }}
+                                    <a  reunion_id ="{{$reunion_futures->id}}" style="font-size: 0.90rem">                                        
+
+                                        {{ date('d/m/yy H:i', strtotime($reunion_futures->start)).' ' }}
                                         |
-                                        {{' '.$reunion_terminee->title}}
-                                    </a> 
+                                        {{' '.$reunion_futures->title}}
+                                       
+                                    </a>
+                                    
                                 </div>
                             </div>
-                                   
-                            </li>
+                            
+                        </li>
                         @endforeach
                     </ul>
-                    @if(count($all_reunion_terminee)>8)
+                    @if(count($all_reunion_futures)>8)
                         <div class="card-footer">
                             <div class="d-flex justify-content-center">
-                                <a data-toggle="modal" data-target="#ReunionTerminee" >Plus....</a>
+                                <a data-toggle="modal" data-target="#ReunionFutures" >Plus....</a>
                             </div>
                         </div>
                     @endif
-                    
                 </div>
-                            
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -210,6 +203,7 @@
     </div>
 </div>
 
+
 <!-- Modal for Réunion aujourd`hui -->
 <div class="modal fade" id="ReunionAujourdhui" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
@@ -232,7 +226,6 @@
         </div>
     </div>
 </div>
-
 
 
 <!-- Modal for La réunion n'est pas terminée -->
@@ -259,6 +252,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Modal for Réunions terminée -->
 <div class="modal fade" id="ReunionTerminee" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
