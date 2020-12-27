@@ -259,6 +259,19 @@ class ReunionController extends Controller
      */
     public function destroy(Reunion $reunion)
     {
-        //
+        try {
+                    $reunion->delete();
+                    session()->flash('message', 'Réunion supprimer avec succès');
+                    session()->flash('type', 'success');
+
+                    return redirect()->back();
+
+                } catch (\Throwable $th) {
+                    session()->flash('message', $th->getMessage());
+                    session()->flash('type', 'danger');
+
+                    return redirect()->back();
+
+            }
     }
 }

@@ -1,6 +1,10 @@
 <div class="modal-header">
     <a href="{{ route('reunion.edit', $reunion->id) }}" target="_blank" type="button" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 2px;;"><i class="far fa-edit"></i></a>
-    <button type="button" id="trash" aria-hidden="true" style="font-size:22px; color: red; background-color: white; margin-right: 2px;"><i class="far fa-trash-alt"></i></button>
+    <form action="{{ route('reunion.destroy', $reunion->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer?')">
+          @csrf
+          @method('DELETE')
+          <button type="submit" id="trash" aria-hidden="true" style="font-size:22px; color: red; background-color: white; margin-right: 2px;"><i class="far fa-trash-alt"></i></button>
+    </form>
     <button type="button" id="envelope" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 2px;"><i class="far fa-envelope"></i></button>
     <button type="button" id="camera" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 2px;"><i class="fas fa-camera"></i></button>
     <button type="button" id="paperclip" aria-hidden="true" style="font-size:22px; background-color: white; margin-right: 2px;"><i class="far fa-paperclip"></i></button>
@@ -113,10 +117,6 @@
 
 <script>
     $(document).ready(function () {
-
-        $("#trash").click(function () {
-            alert("En développement");
-        });
 
         $("#envelope").click(function () {
             alert("En développement");

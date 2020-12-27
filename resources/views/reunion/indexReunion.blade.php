@@ -88,19 +88,19 @@
                     
                         <tr>
                             <td>
-                                <a href="{{ route('reunion.details', $reunion->id) }}">
+                                <a reunion_id ="{{$reunion->id}}">
                                 
                                 {{ date('d/m/yy | H:i', strtotime($reunion->start)) }}
                                 
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ route('reunion.details', $reunion->id) }}">
+                                <a reunion_id ="{{$reunion->id}}">
                                 {{$reunion->title }}
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ route('reunion.details', $reunion->id) }}">
+                                <a reunion_id ="{{$reunion->id}}">
                                 {{ mb_strimwidth($reunion->chantier->location->chantier_adresse->adresse, 0, 32, "..") }}
                                 </a>
                             </td>
@@ -137,15 +137,14 @@
 
 
 <!-- reunionDetails Modal -->
-<div id="reunionDetails" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div id="reunionDetails" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             
             
         </div>
     </div>
 </div>
-
 
 <!---------------------- java script start ---------------------------->
 
@@ -252,7 +251,7 @@
             },
 
             eventDrop: function (info) {
-
+                
                 if (!confirm("Are you sure about this change?")) {
                     info.revert();
                 } else {
@@ -377,6 +376,26 @@
     } );
     
     /*-------- script for datatable start ----------------------------*/
+    
+    $(document).ready(function(){
+        $(document).on('click', 'a[reunion_id]', function (e) {
+            
+            var reunion_id = $(this).attr('reunion_id');
+            var url = '{{ route("reunion.show", ":id") }}';
+                url = url.replace(":id", reunion_id);
+
+                $.ajax({
+
+                    url: url,
+                    type: 'GET',
+                    success: function (response) {
+
+                        $('#reunionDetails .modal-content').html(response);
+                        $('#reunionDetails').modal('show');
+                    }
+                });
+        }); 
+    });
 </script>        
 
 <!---------------------- java script end ---------------------------->
