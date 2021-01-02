@@ -83,11 +83,8 @@
     </head>
     <body>
         <div id="app">
-            @yield('navbar')
-
-            @yield('message')
-
             <main class="py-4">
+                @yield('navbar')
                 @yield('content')
             </main>
         </div>

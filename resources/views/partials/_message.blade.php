@@ -1,5 +1,5 @@
 <!-- Display error message's start ------->
-<div class="container">
+<div style="margin-top: 10px">
     @if($errors->any())
         <div class="alert alert-danger">
             @if($errors->count()===1)

@@ -148,6 +148,7 @@ class ReunionController extends Controller
         
         $data['reunion'] = $reunion;
         
+       
         return view('reunion.showReunion', $data);
         
        // return response()->json($reunion);
@@ -259,19 +260,19 @@ class ReunionController extends Controller
      */
     public function destroy(Reunion $reunion)
     {
-        try {
-                    $reunion->delete();
-                    session()->flash('message', 'Réunion supprimer avec succès');
-                    session()->flash('type', 'success');
+        if($reunion->elements()->count()){
+            session()->flash("message", "Impossible de supprimer! la réunion a un enregistrement d'élément. Supprimez d'abord les éléments puis essayez de supprimer la réunion");
+            session()->flash('type', 'danger');
 
-                    return redirect()->back();
-
-                } catch (\Throwable $th) {
-                    session()->flash('message', $th->getMessage());
-                    session()->flash('type', 'danger');
-
-                    return redirect()->back();
-
-            }
+            return redirect()->back();
+        } else {
+        
+            $reunion->delete();
+            
+            session()->flash("message", "Réunion supprimée avec succès");
+            session()->flash("type", "success");
+            
+            return redirect()->back();
+        }
     }
 }

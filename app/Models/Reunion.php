@@ -59,4 +59,14 @@ class Reunion extends Model
                 ->withPivot('statut')
                 ->withTimestamps();
     }
+    
+    /**
+     * 
+     * @return type On to Many relation between Reunion and Element
+     */
+    public function elements()
+    {
+        
+        return $this->hasMany('App\Models\Element');
+    }
 }

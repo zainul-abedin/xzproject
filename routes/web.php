@@ -54,6 +54,15 @@ Route::get('chantier/{chantier}/edit', [App\Http\Controllers\ChantierController:
 Route::put('chantier/{chantier}', [App\Http\Controllers\ChantierController::class, 'update'])->name('chantier.update');
 Route::delete('chantier/{chantier}', [App\Http\Controllers\ChantierController::class, 'destroy'])->name('chantier.destroy');
 
+// Route for element
+//Route::resource('element', 'App\Http\Controllers\ElementController');
+Route::get('element', [App\Http\Controllers\ElementController::class,'index'])->name('element.index');
+Route::get('element/create/{reunion_id?}', [App\Http\Controllers\ElementController::class,'create'])->name('element.create');
+Route::post('element', [App\Http\Controllers\ElementController::class,'store'])->name('element.store');
+Route::get('element/{element}', [App\Http\Controllers\ElementController::class,'show'])->name('element.show');
+Route::get('element/{element}/edit', [App\Http\Controllers\ElementController::class,'edit'])->name('element.edit');
+Route::put('element/{element}', [App\Http\Controllers\ElementController::class,'update'])->name('element.update');
+Route::delete('element/{element}', [App\Http\Controllers\ElementController::class,'destroy'])->name('element.destroy');
 
 Auth::routes();
 

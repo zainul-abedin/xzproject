@@ -5,5 +5,12 @@
         <data xmlns="http://www.netbeans.org/ns/php-project/1">
             <name>xzproject</name>
         </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>commentaire</word>
+            <word>endif</word>
+            <word>endsection</word>
+            <word>probleme</word>
+            <word>supplémentaire</word>
+        </spellchecker-wordlist>
     </configuration>
 </project>
