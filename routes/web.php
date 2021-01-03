@@ -64,6 +64,27 @@ Route::get('element/{element}/edit', [App\Http\Controllers\ElementController::cl
 Route::put('element/{element}', [App\Http\Controllers\ElementController::class,'update'])->name('element.update');
 Route::delete('element/{element}', [App\Http\Controllers\ElementController::class,'destroy'])->name('element.destroy');
 
+// Route for ElementPhotoControlle
+//Route::resource('elementPhotos', 'App\Http\Controllers\ElementPhotoController');
+Route::get('elementPhotos', [App\Http\Controllers\ElementPhotoController::class,'index'])->name('elementPhotos.index');
+Route::get('elementPhotos/create/{element_id?}', [App\Http\Controllers\ElementPhotoController::class,'create'])->name('elementPhotos.create');
+Route::post('elementPhotos', [App\Http\Controllers\ElementPhotoController::class,'store'])->name('elementPhotos.store');
+Route::get('elementPhotos/{elementPhotos}', [App\Http\Controllers\ElementPhotoController::class,'show'])->name('elementPhotos.show');
+Route::get('elementPhotos/{elementPhotos}/edit', [App\Http\Controllers\ElementPhotoController::class,'edit'])->name('elementPhotos.edit');
+Route::put('elementPhotos/{elementPhotos}', [App\Http\Controllers\ElementPhotoController::class,'update'])->name('elementPhotos.update');
+Route::delete('elementPhotos/{elementPhotos}', [App\Http\Controllers\ElementPhotoController::class,'destroy'])->name('elementPhotos.destroy');
+
+// Route for ElementDocumentController
+//Route::resource('elementDocuments', 'App\Http\Controllers\ElementDocumentController');
+Route::get('elementDocuments', [App\Http\Controllers\ElementDocumentController::class,'index'])->name('elementDocuments.index');
+Route::get('elementDocuments/create/{element_id?}', [App\Http\Controllers\ElementDocumentController::class,'create'])->name('elementDocuments.create');
+Route::post('elementDocuments', [App\Http\Controllers\ElementDocumentController::class,'store'])->name('elementDocuments.store');
+Route::get('elementDocuments/{elementDocuments}', [App\Http\Controllers\ElementDocumentController::class,'show'])->name('elementDocuments.show');
+Route::get('elementDocuments/{elementDocuments}/edit', [App\Http\Controllers\ElementDocumentController::class,'edit'])->name('elementDocuments.edit');
+Route::put('elementDocuments/{elementDocuments}', [App\Http\Controllers\ElementDocumentController::class,'update'])->name('elementDocuments.update');
+Route::delete('elementDocuments/{elementDocuments}', [App\Http\Controllers\ElementDocumentController::class,'destroy'])->name('elementDocuments.destroy');
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -15,7 +15,8 @@ class ElementController extends Controller
      */
     public function index() 
     {
-        echo 'Element Index';
+        $data = Element::orderby('id', 'desc')->get();
+        return response()->json($data);
     }
 
     /**
@@ -23,7 +24,7 @@ class ElementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($reunion_id)
+    public function create($reunion_id = NULL)
     {
 
         return view('element.creatElement')->with('reunion_id', $reunion_id);
@@ -49,7 +50,7 @@ class ElementController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         } else {
         
-            //Take the input field data form $resuest object
+            //Take the input field data form $request object
             
             $data = [
                 'reunion_id' => $request->input('reunion_id'),

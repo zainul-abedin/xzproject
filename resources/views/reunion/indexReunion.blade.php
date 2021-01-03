@@ -36,25 +36,7 @@
     </nav>  
 
     <!-- Display error massage's start ------->    
-    @if($errors->any())
-    <div class="alert alert-danger">
-        @if($errors->count()===1)
-        {{ $errors->first() }}
-        @else
-        <lu>
-            @foreach($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </lu>
-        @endif
-    </div>
-    @endif
-
-    @if(session()->has('message'))
-    <div class="alert alert-{{ session('type') }}">
-        {{ session('message') }}
-    </div>
-    @endif
+    @include('partials._message')
     <!-- Display error massage's end ------->  
 
     <div id="allReunionListReplace"> <!-- all reunion list view div, it's replace by ajax -->

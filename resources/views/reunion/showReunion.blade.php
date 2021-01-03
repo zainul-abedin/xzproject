@@ -145,7 +145,7 @@
                 </div>
                 <div class="col-9">
                     <button type="button" id="show_photos" aria-hidden="true" style="font-size:22px; background-color: white; "><i class="far fa-eye"></i></button>
-                    <button type="button" id="add_photos" aria-hidden="true" style="font-size:22px; background-color: white; "><i class="far fa-plus-square"></i></button>
+                    <a href="{{ route('elementPhotos.create', $element->id) }}" target="_blank" id="add_photos" aria-hidden="true" style="font-size:22px; background-color: white; "><i class="far fa-plus-square"></i></a>
                     <button type="button" id="edit_photos" aria-hidden="true" style="font-size:22px; background-color: white; "><i class="far fa-edit"></i></button>
                 </div>
             </div>

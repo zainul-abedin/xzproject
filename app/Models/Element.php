@@ -27,4 +27,26 @@ class Element extends Model
     
         return $this->belongsTo('App\Models\Reunion');
     }
+    
+    /**
+     * 
+     * @return type One to Many relation between Element and ElementPhoto
+     */
+    public function elementPhotos() 
+    {
+    
+        return $this->hasMany('App\Models\ElementPhoto');
+        
+    }
+    
+    /**
+     * 
+     * @return type One to Many relation between Element and ElementDocument
+     */
+    public function elementDocument() 
+    {
+    
+        return $this->hasMany('App\Models\ElementDocument');
+        
+    }
 }

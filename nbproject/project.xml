@@ -7,8 +7,12 @@
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
             <word>commentaire</word>
+            <word>csrf</word>
+            <word>endfoeach</word>
+            <word>endforeach</word>
             <word>endif</word>
             <word>endsection</word>
+            <word>foreach</word>
             <word>probleme</word>
             <word>supplémentaire</word>
         </spellchecker-wordlist>
