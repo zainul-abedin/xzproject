@@ -66,10 +66,10 @@ Route::delete('element/{element}', [App\Http\Controllers\ElementController::clas
 
 // Route for ElementPhotoControlle
 //Route::resource('elementPhotos', 'App\Http\Controllers\ElementPhotoController');
-Route::get('elementPhotos', [App\Http\Controllers\ElementPhotoController::class,'index'])->name('elementPhotos.index');
+Route::get('elementPhotos/{element_id?}', [App\Http\Controllers\ElementPhotoController::class,'index'])->name('elementPhotos.index');
 Route::get('elementPhotos/create/{element_id?}', [App\Http\Controllers\ElementPhotoController::class,'create'])->name('elementPhotos.create');
 Route::post('elementPhotos', [App\Http\Controllers\ElementPhotoController::class,'store'])->name('elementPhotos.store');
-Route::get('elementPhotos/{elementPhotos}', [App\Http\Controllers\ElementPhotoController::class,'show'])->name('elementPhotos.show');
+Route::get('elementPhotos/{elementPhotos}/show', [App\Http\Controllers\ElementPhotoController::class,'show'])->name('elementPhotos.show');
 Route::get('elementPhotos/{elementPhotos}/edit', [App\Http\Controllers\ElementPhotoController::class,'edit'])->name('elementPhotos.edit');
 Route::put('elementPhotos/{elementPhotos}', [App\Http\Controllers\ElementPhotoController::class,'update'])->name('elementPhotos.update');
 Route::delete('elementPhotos/{elementPhotos}', [App\Http\Controllers\ElementPhotoController::class,'destroy'])->name('elementPhotos.destroy');

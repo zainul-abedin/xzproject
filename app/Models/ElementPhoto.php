@@ -13,7 +13,9 @@ class ElementPhoto extends Model
         'element_id',
         'photo_type',
         'description',
-        'photo',
+        'file_path',
+        'file_name',
+        'file_mime',
         'createur'
     ];
     

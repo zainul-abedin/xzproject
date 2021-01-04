@@ -21,7 +21,10 @@ class CreateElementPhotosTable extends Migration
             
             $table->string('photo_type', 50)->nullable();
             $table->text('description')->nullable();
-            $table->string('photo',150);
+            $table->string('file_path',150);
+            $table->string('file_name',150);
+            $table->string('file_mime',50);
+            
             $table->string('createur',50);
             
             $table->timestamps();

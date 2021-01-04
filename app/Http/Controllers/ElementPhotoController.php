@@ -13,9 +13,17 @@ class ElementPhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($element_id = NULL)
     {
-        //
+        if($element_id){
+            $data['elementPhotos'] = ElementPhoto::where('element_id', $element_id)->get();
+            //return response()->json($data);
+            return view('elementPhoto.indexElementPhoto', $data);
+        } else {
+            $data['elementPhotos'] = ElementPhoto::all();
+            return view('elementPhoto.indexElementPhoto', $data);
+            //return response()->json($data);
+        }
     }
 
     /**
@@ -74,7 +82,9 @@ class ElementPhotoController extends Controller
                 'element_id' => $request->input('element_id'),
                 'photo_type' => $request->input('photo_type'),
                 'description' => $request->input('description'),
-                'photo' => $destinationPath.'/'.$fileName,
+                'file_path' => $destinationPath,
+                'file_name' => $fileName,
+                'file_mime' => $file->getClientMimeType(),
                 'createur' => auth()->user()->name
             ];
             ElementPhoto::create($data);
@@ -95,7 +105,7 @@ class ElementPhotoController extends Controller
      */
     public function show(ElementPhoto $elementPhoto)
     {
-        //
+        echo'This is element show page';
     }
 
     /**

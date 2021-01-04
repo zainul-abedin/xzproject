@@ -144,11 +144,12 @@
                     <i class="fas fa-image" style="font-size: 20px"></i>
                 </div>
                 <div class="col-9">
-                    <button type="button" id="show_photos" aria-hidden="true" style="font-size:22px; background-color: white; "><i class="far fa-eye"></i></button>
-                    <a href="{{ route('elementPhotos.create', $element->id) }}" target="_blank" id="add_photos" aria-hidden="true" style="font-size:22px; background-color: white; "><i class="far fa-plus-square"></i></a>
+                    <a href="{{ route('elementPhotos.index', $element->id) }}" target="_blank" type="button" id="show_photos" aria-hidden="true" style="font-size:22px; margin-right: 10px; background-color: white; "><i class="far fa-eye"></i></a>
+                    <a href="{{ route('elementPhotos.create', $element->id) }}" target="_blank" type="button" id="add_photos" aria-hidden="true" style="font-size:22px;margin-right: 10px; background-color: white; "><i class="far fa-plus-square"></i></a>
                     <button type="button" id="edit_photos" aria-hidden="true" style="font-size:22px; background-color: white; "><i class="far fa-edit"></i></button>
                 </div>
             </div>
+            <!--
             <div class="row" style="margin-bottom: 10px">
                 <div class="col-1 offset-1">
                     <i class="fas fa-paperclip" style="font-size: 20px"></i>
@@ -159,6 +160,7 @@
                     <button type="button" id="edit_documents" aria-hidden="true" style="font-size:22px; background-color: white; "><i class="far fa-edit"></i></button>
                 </div>
             </div>
+            -->
             <div class="row" style="margin-bottom: 10px">
                 <div class="col-1 offset-1">
                     <i class="fas fa-user-cog" style="font-size: 18px"></i>
