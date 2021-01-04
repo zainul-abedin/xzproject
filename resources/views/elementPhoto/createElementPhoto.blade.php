@@ -51,6 +51,7 @@
         autoProcessQueue : false,
         addRemoveLinks : true,
         maxFiles : 50,
+        maxFilesize: 20,
 
         parallelUploads: 50,  // Number of files process at a time (default 2)
 
@@ -60,7 +61,7 @@
 
              $("#submit-all").click(function(e){
                  e.preventDefault();
-                 myDropzone.processQueue();
+                 myDropzone.processQueue();                 
              });
         },
         success : function(response){

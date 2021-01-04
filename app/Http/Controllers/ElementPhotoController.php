@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ElementPhoto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ElementPhotoController extends Controller
 {
@@ -41,6 +42,16 @@ class ElementPhotoController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'element_id' => 'required',
+            'file' => 'max:20480'
+        ]);
+        
+        if($validator->fails()){
+            //return redirect()->back()->withErrors($validator)->withInput();
+            return response()->json($validator);
+        }
+        
         if($request->hasFile('file')){            
             // Get the file from the post request
             $file = $request->file('file');
@@ -56,22 +67,23 @@ class ElementPhotoController extends Controller
             $file->move($destinationPath, $fileName);
         }
         
-        // Take input field data form $request object
-        $data = [
-            'element_id' => $request->input('element_id'),
-            'photo_type' => $request->input('photo_type'),
-            'description' => $request->input('description'),
-            'photo' => $destinationPath.'/'.$fileName,
-            'createur' => auth()->user()->name
-         ];
         
         try {
+            // Take input field data form $request object
+            $data = [
+                'element_id' => $request->input('element_id'),
+                'photo_type' => $request->input('photo_type'),
+                'description' => $request->input('description'),
+                'photo' => $destinationPath.'/'.$fileName,
+                'createur' => auth()->user()->name
+            ];
             ElementPhoto::create($data);
             return response()->json(201);
-        } catch (\Throwable $th) {
-            return response()->json(['erroe'=>$th],500);
-        }
+        } 
         
+        catch (\Throwable $th) {
+            return response()->json(['erroe'=>$th],500);
+        }   
         
     }
 
