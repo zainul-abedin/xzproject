@@ -144,9 +144,20 @@ class ElementController extends Controller
      */
     public function destroy(Element $element)
     {
-        $element->delete();
-        session()->flash("message", "Élément supprimé avec succès");
-        session()->flash("type", "success");
-        return redirect()->back();
+        
+        if($element->elementPhotos()->count()){
+            session()->flash("message", "Impossible de supprimer! la élémént a un enregistrement d'photos. Supprimez d'abord les photos puis essayez de supprimer la élément");
+            session()->flash('type', 'danger');
+
+            return redirect()->back();
+        } else {
+        
+            $element->delete();
+            
+            session()->flash("message", "Réunion supprimée avec succès");
+            session()->flash("type", "success");
+            
+            return redirect()->back();
+        }
     }
 }
