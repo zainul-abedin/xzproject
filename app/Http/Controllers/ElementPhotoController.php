@@ -114,9 +114,11 @@ class ElementPhotoController extends Controller
      * @param  \App\Models\ElementPhoto  $elementPhoto
      * @return \Illuminate\Http\Response
      */
-    public function edit(ElementPhoto $elementPhoto)
+    public function edit($id)
     {
-        //
+        $data['elementPhoto'] = ElementPhoto::where('id', $id)->first();
+        
+        return view('elementPhoto.editElementPhoto', $data);
     }
 
     /**
@@ -126,9 +128,37 @@ class ElementPhotoController extends Controller
      * @param  \App\Models\ElementPhoto  $elementPhoto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ElementPhoto $elementPhoto)
-    {
-        //
+    public function update(Request $request, $id)
+    {   
+        $validator = Validator::make($request->all(), [
+            'element_id' => 'required',
+            'photo_type' => 'required'
+        ]);
+        
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        } else {
+            
+           $data = [
+               'photo_type' => $request->input('photo_type'),
+               'description' => $request->input('description')
+           ];
+            
+           try{
+               ElementPhoto::where('id',$id)->update($data);
+               session()->flash('message', 'Photo update successfully');
+               session()->flash('type','success');
+               $element_id = $request->input('element_id');
+               return redirect()->route('elementPhotos.index', $element_id);
+           } catch (\Throwable $th) {
+               session()->flash('message', $th->getMessage());
+               session()->flash('type', 'danger');
+               return redirect()->back()->withInput();
+           }
+        }
+        
+        
+        
     }
 
     /**

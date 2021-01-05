@@ -67,7 +67,7 @@
                                     @method('DELETE')
                                     <button type="submit" aria-hidden="true" style="font-size:22px; margin-bottom: -16px; color: red; background-color: white;"><i class="far fa-trash-alt"></i></button>
                                 </form>
-                                <a href="{{ route('elementPhotos.show', $elementPhoto->id, 'show') }}" type="button" aria-hidden="true" style="font-size:22px; margin-bottom: -5px; color: green; background-color: white;"><i class="far fa-edit"></i></a>
+                                <a href="{{ route('elementPhotos.edit', $elementPhoto->id, 'edit') }}" type="button" aria-hidden="true" style="font-size:22px; margin-bottom: -5px; color: green; background-color: white;"><i class="far fa-edit"></i></a>
                                 <!--
                                 <button type="button" aria-hidden="true" style="font-size:22px; margin-bottom: -5px; color: blue; background-color: white;"><i class="far fa-eye"></i></button>
                                 -->
