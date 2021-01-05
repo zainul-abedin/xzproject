@@ -5,6 +5,7 @@
 <div class="container">
     <nav class="navbar navbar-light" style="background-color: #E9E9E9; margin-bottom: 10px">
         <button onclick="self.close()" style="font-size: 30px"><i class="fas fa-times"></i></button>
+        <button onclick="self.close()" style="font-size: 30px"><i class="fas fa-times"></i></button>
     </nav>
 </div>
 
@@ -44,7 +45,8 @@
                         Your browser does not support the video tag.
                     </video>
                     @endif
-
+                    
+                    
                     <div class="card-body">
 
                         @if($elementPhoto->photo_type)  
@@ -61,15 +63,16 @@
                                 <form action="{{ route('elementPhotos.destroy', $elementPhoto->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" id="trash" aria-hidden="true" style="font-size:22px; margin-bottom: -16px; color: red; background-color: white;"><i class="far fa-trash-alt"></i></button>
+                                    <button type="submit" aria-hidden="true" style="font-size:22px; margin-bottom: -16px; color: red; background-color: white;"><i class="far fa-trash-alt"></i></button>
                                 </form>
-                                <button type="button" aria-hidden="true" style="font-size:22px; margin-bottom: -5px; color: green; background-color: white;"><i class="far fa-edit"></i></button>
+                                <a href="{{ route('elementPhotos.show', $elementPhoto->id, 'show') }}" type="button" aria-hidden="true" style="font-size:22px; margin-bottom: -5px; color: green; background-color: white;"><i class="far fa-edit"></i></a>
                                 <button type="button" aria-hidden="true" style="font-size:22px; margin-bottom: -5px; color: blue; background-color: white;"><i class="far fa-eye"></i></button>
                             </div>
                             <small class="text-muted">{{date_format($elementPhoto->updated_at, 'd/m/Y')}}</small>
                         </div>
 
                     </div>
+                    
 
                 </div>
 

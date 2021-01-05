@@ -16,11 +16,11 @@ class ElementPhotoController extends Controller
     public function index($element_id = NULL)
     {
         if($element_id){
-            $data['elementPhotos'] = ElementPhoto::where('element_id', $element_id)->get();
+            $data['elementPhotos'] = ElementPhoto::where('element_id', $element_id)->orderBy('photo_type', 'asc')->get();
             //return response()->json($data);
             return view('elementPhoto.indexElementPhoto', $data);
         } else {
-            $data['elementPhotos'] = ElementPhoto::all();
+            $data['elementPhotos'] = ElementPhoto::orderBy('photo_type', 'asc')->get();
             return view('elementPhoto.indexElementPhoto', $data);
             //return response()->json($data);
         }
@@ -65,7 +65,7 @@ class ElementPhotoController extends Controller
             $file = $request->file('file');
 
             // set the file name
-            $fileName = uniqid().$file->getClientOriginalName();
+            $fileName = $file->getClientOriginalName();
 
             // Define upload path
             $path = "/photos/elementPhotos/";
@@ -103,9 +103,9 @@ class ElementPhotoController extends Controller
      * @param  \App\Models\ElementPhoto  $elementPhoto
      * @return \Illuminate\Http\Response
      */
-    public function show(ElementPhoto $elementPhoto)
+    public function show($id)
     {
-        echo'This is element show page';
+        return response()->json($id);
     }
 
     /**
@@ -137,21 +137,32 @@ class ElementPhotoController extends Controller
      * @param  \App\Models\ElementPhoto  $elementPhoto
      * @return \Illuminate\Http\Response
      */
-    public function destroy($elementPhoto_id)
-    {
-        $elementPhoto = ElementPhoto::where('id', $elementPhoto_id)->first();
+    public function destroy(Request $request, $elementPhoto = NULL)
+    { 
+       
+        if($request->get('filename')){
+           $filename = $request->get('filename'); 
+           $velementPhoto = ElementPhoto::where('file_name', $filename)->first();
+           unlink($velementPhoto->file_path.$velementPhoto->file_name);
+           $velementPhoto->delete();
+           return $filename;
+        }else{
         
-        try{
-            unlink($elementPhoto->file_path.$elementPhoto->file_name);
-            $elementPhoto->delete();
-            session()->flash('message', 'Photo supprimée avec succès');
-            session()->flash('type', 'success');
-            return redirect()->back();
-        } catch (\Throwable $th) {
-            session()->flash('message', $th->getMessage());
-            session()->flash('type', 'danger');
-            return redirect()->back();
-        }
+            $velementPhoto = ElementPhoto::where('id', $elementPhoto)->first();
+
+            try{
+                unlink($velementPhoto->file_path.$velementPhoto->file_name);
+                $velementPhoto->delete();
+                session()->flash('message', 'Photo supprimée avec succès');
+                session()->flash('type', 'success');
+                return redirect()->back();
+            } catch (\Throwable $th) {
+                session()->flash('message', $th->getMessage());
+                session()->flash('type', 'danger');
+                return redirect()->back();
+            }
+       
+        }    
         
     }
 }

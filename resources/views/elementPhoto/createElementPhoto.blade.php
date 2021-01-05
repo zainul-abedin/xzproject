@@ -48,25 +48,44 @@
 <script>
     
     Dropzone.options.dropzoneForm = {
-        autoProcessQueue : false,
         addRemoveLinks : true,
         maxFiles : 50,
         maxFilesize: 20,
-
-        parallelUploads: 50,  // Number of files process at a time (default 2)
-
-        init : function(){
-
-             var myDropzone = this;
-
-             $("#submit-all").click(function(e){
-                 e.preventDefault();
-                 myDropzone.processQueue();                 
-             });
+        
+        renameFile: function(file) {
+          var dt = new Date();
+          var time = dt.getTime();
+          return time+file.name;
         },
-        success : function(response){
-            console.log(response);
-        }
+
+        removedfile: function(file) 
+            {
+                var name = file.upload.filename;
+                $.ajax({
+                    headers: {
+                                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                            },
+                    type: 'DELETE',
+                    url: "{{ route('elementPhotos.destroy') }}",
+                    data: {filename: name},
+                    success: function (data){
+                        console.log(data);
+                    },
+                    error: function(e) {
+                        console.log(e);
+                    }});
+                    var fileRef;
+                    return (fileRef = file.previewElement) != null ? 
+                    fileRef.parentNode.removeChild(file.previewElement) : void 0;
+            },
+            success: function(file, response) 
+            {
+                console.log(response);
+            },
+            error: function(file, response)
+            {
+               return false;
+            }
     };
     
 </script>

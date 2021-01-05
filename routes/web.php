@@ -72,7 +72,7 @@ Route::post('elementPhotos', [App\Http\Controllers\ElementPhotoController::class
 Route::get('elementPhotos/{elementPhotos}/show', [App\Http\Controllers\ElementPhotoController::class,'show'])->name('elementPhotos.show');
 Route::get('elementPhotos/{elementPhotos}/edit', [App\Http\Controllers\ElementPhotoController::class,'edit'])->name('elementPhotos.edit');
 Route::put('elementPhotos/{elementPhotos}', [App\Http\Controllers\ElementPhotoController::class,'update'])->name('elementPhotos.update');
-Route::delete('elementPhotos/{elementPhotos}', [App\Http\Controllers\ElementPhotoController::class,'destroy'])->name('elementPhotos.destroy');
+Route::delete('elementPhotos/{elementPhotos?}', [App\Http\Controllers\ElementPhotoController::class,'destroy'])->name('elementPhotos.destroy');
 
 // Route for ElementDocumentController
 //Route::resource('elementDocuments', 'App\Http\Controllers\ElementDocumentController');
