@@ -137,8 +137,21 @@ class ElementPhotoController extends Controller
      * @param  \App\Models\ElementPhoto  $elementPhoto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ElementPhoto $elementPhoto)
+    public function destroy($elementPhoto_id)
     {
-        //
+        $elementPhoto = ElementPhoto::where('id', $elementPhoto_id)->first();
+        
+        try{
+            unlink($elementPhoto->file_path.$elementPhoto->file_name);
+            $elementPhoto->delete();
+            session()->flash('message', 'Photo supprimée avec succès');
+            session()->flash('type', 'success');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            session()->flash('message', $th->getMessage());
+            session()->flash('type', 'danger');
+            return redirect()->back();
+        }
+        
     }
 }
