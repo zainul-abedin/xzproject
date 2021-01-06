@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ElementPhoto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 
 class ElementPhotoController extends Controller
 {
@@ -66,6 +67,11 @@ class ElementPhotoController extends Controller
 
             // set the file name
             $fileName = $file->getClientOriginalName();
+            
+            // make a folde if not exist
+            if(!file_exists('photos/elementPhotos/elementThumbnails')){
+                mkdir('photos/elementPhotos/elementThumbnails', 0777, true);
+            }
 
             // Define upload path
             $path = "/photos/elementPhotos/";
@@ -73,6 +79,20 @@ class ElementPhotoController extends Controller
 
             // Move the file to correct location
             $file->move($destinationPath, $fileName);
+            
+            
+            if($file->getClientMimeType()=="image/jpg" || $file->getClientMimeType()=="image/png" || $file->getClientMimeType()=="image/jpeg"){
+                // open an image file
+                $img = Image::make($destinationPath.$fileName);
+
+                // now resize the image
+                $img->fit(320, 240);
+                
+                //and insert a watermark for example
+                $img->save($destinationPath.'elementThumbnails/'.$fileName);
+            }  
+            
+            
         }
         
         
@@ -146,7 +166,7 @@ class ElementPhotoController extends Controller
             
            try{
                ElementPhoto::where('id',$id)->update($data);
-               session()->flash('message', 'Photo update successfully');
+               session()->flash('message', 'Photo mise à jour avec succès');
                session()->flash('type','success');
                $element_id = $request->input('element_id');
                return redirect()->route('elementPhotos.index', $element_id);
@@ -173,15 +193,29 @@ class ElementPhotoController extends Controller
         if($request->get('filename')){
            $filename = $request->get('filename'); 
            $velementPhoto = ElementPhoto::where('file_name', $filename)->first();
+           
            unlink($velementPhoto->file_path.$velementPhoto->file_name);
+           
+           // cheking that Thumbnail file exist or not 
+           if(file_exists('photos/elementPhotos/elementThumbnails/'.$velementPhoto->file_name)){
+           unlink($velementPhoto->file_path.'elementThumbnails/'.$velementPhoto->file_name);
+           }
+           
            $velementPhoto->delete();
            return $filename;
+           
         }else{
         
             $velementPhoto = ElementPhoto::where('id', $elementPhoto)->first();
 
             try{
                 unlink($velementPhoto->file_path.$velementPhoto->file_name);
+                
+                // cheking that Thumbnail file exist or not 
+                if(file_exists('photos/elementPhotos/elementThumbnails/'.$velementPhoto->file_name)){
+                unlink($velementPhoto->file_path.'elementThumbnails/'.$velementPhoto->file_name);
+                }
+                
                 $velementPhoto->delete();
                 session()->flash('message', 'Photo supprimée avec succès');
                 session()->flash('type', 'success');

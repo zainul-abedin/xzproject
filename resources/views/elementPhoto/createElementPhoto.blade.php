@@ -14,7 +14,6 @@
     <nav class="navbar navbar-light" style="background-color: #E9E9E9; margin-bottom: 10px">
         <button onclick="self.close()" style="font-size: 30px"><i class="fas fa-times"></i></button>
         <span>Ajouter photos</span>
-        <button type="submit" id="submit-all" style="font-size: 30px; background-color: #E9E9E9"><i class="far fa-save"></i></button>
     </nav>
     <form action="{{ route('elementPhotos.store') }}" class="dropzone" id='dropzoneForm' method="POST" enctype="multipart/form-data">
         @csrf

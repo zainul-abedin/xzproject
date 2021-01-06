@@ -29,7 +29,7 @@
 
                     @if($elementPhoto->file_mime=="image/jpg" || $elementPhoto->file_mime=="image/png" || $elementPhoto->file_mime=="image/jpeg")             
                     <a href="{{asset('photos/elementPhotos/'.$elementPhoto->file_name)}}" data-lightbox="roadtrip" >
-                        <img class="card-img-top" src="{{asset('photos/elementPhotos/'.$elementPhoto->file_name)}}" alt="Responsive image">
+                        <img class="card-img-top" src="{{asset('photos/elementPhotos/elementThumbnails/'.$elementPhoto->file_name)}}" alt="Responsive image">
                     </a>
                     
                     @elseif($elementPhoto->file_mime=="application/pdf")    

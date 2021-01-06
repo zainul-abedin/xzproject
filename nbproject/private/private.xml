@@ -7,7 +7,7 @@
             <file>file:/var/www/html/xzproject/routes/web.php</file>
             <file>file:/var/www/html/xzproject/resources/views/elementPhoto/editElementPhoto.blade.php</file>
             <file>file:/var/www/html/xzproject/resources/views/elementPhoto/indexElementPhoto.blade.php</file>
-            <file>file:/var/www/html/xzproject/resources/views/elementPhoto/createElementPhoto.blade.php</file>
+            <file>file:/var/www/html/xzproject/app/Http/Controllers/ReunionController.php</file>
         </group>
     </open-files>
 </project-private>
